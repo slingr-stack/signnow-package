@@ -214,7 +214,7 @@ let signnow = function (options) {
  ****************************************************/
 
 function setApiUri(options) {
-    let API_URL = config.get("signnowApiBaseUrl");
+    let API_URL = config.get("signnowBaseUrl");
     let url = options.path || "";
     options.url = API_URL + url;
     sys.logs.debug('[signnow] Set url: ' + options.path + "->" + options.url);
@@ -242,7 +242,7 @@ function setAuthorization(options) {
 }
 
 function refreshSignNowToken() {
-    let API_URL = config.get("signnowApiBaseUrl");
+    let API_URL = config.get("signnowBaseUrl");
     sys.utils.concurrency.lock('signnow-refresh-token', function() {
         const refreshTokenFromStorage = sys.storage.get('signnow-refresh-token', {decrypt: true});
         let refreshTokenResponse = httpService.post({
