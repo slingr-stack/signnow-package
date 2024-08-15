@@ -1,0 +1,67 @@
+{
+    "label": "SignNow",
+    "name": "signnow",
+    "dependencies": [
+        {
+            "type": "service",
+            "name": "http",
+            "version": "v1.3.7",
+            "instanceId": "shared"
+        }
+    ],
+    "configuration": [
+        {
+            "label": "Basic Token",
+            "name": "basicToken",
+            "type": "password",
+            "required": true
+        },
+        {
+            "label": "Refresh Token",
+            "name": "refreshToken",
+            "type": "password",
+            "required": true
+        },
+        {
+            "label": "Webhook URL",
+            "name": "webhookUrl",
+            "type": "label",
+            "value": "@config.WEBHOOK_URL"
+        },
+        {
+            "label": "Webhook Secret Key",
+            "name": "webhookSecretKey",
+            "type": "password"
+        },
+        {
+            "label": "SignNow API URL",
+            "name": "signnowBaseUrl",
+            "type": "label",
+            "value": "https://api.signnow.com"
+        }
+    ],
+    "events": [
+        {
+            "label": "Webhook",
+            "name": "webhook",
+            "description": "Happens when a SignNow hits the endpoint URL."
+        }
+    ],
+    "metadata": [
+        {
+            "type": "script",
+            "namespace": "api",
+            "path": "/scripts/api.js"
+        },
+        {
+            "type": "script",
+            "namespace": "utils",
+            "path": "/scripts/utils.js"
+        },
+        {
+            "type": "listener",
+            "namespace": "webhook",
+            "path": "/listeners/webhook.js"
+        }
+    ]
+}
