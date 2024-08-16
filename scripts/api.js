@@ -24,7 +24,7 @@ function handleRequestWithRetry(requestFn, options, callbackData, callbacks, ret
         return requestFn(options, callbackData, callbacks);
     } catch (error) {
         if (!retry && (error.additionalInfo && error.additionalInfo.status === 401 ||
-                       error.additionalInfo && error.additionalInfo.status === 400 && error.body.error === 'invalid_token')) {
+                       error.additionalInfo && error.additionalInfo.status === 400 && error.additionalInfo.body.error === 'invalid_token')) {
             sys.logs.info("[signnow] Refreshing token for request " + options.path);
             refreshSignNowToken();
         } else {
