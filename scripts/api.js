@@ -250,7 +250,8 @@ function refreshSignNowToken() {
             url: `${API_URL}/oauth2/token`,
             headers: {
                 "Accept": "application/json",
-                "Content-Type": "multipart/form-data"
+                "Content-Type": "multipart/form-data",
+                "Authorization": "Basic "+config.get("basicToken")
             },
             body: {
                 "grant_type": "refresh_token",
